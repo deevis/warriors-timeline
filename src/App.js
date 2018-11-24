@@ -4,9 +4,15 @@ import './App.css';
 
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { FaBeer } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 import { FaCat } from 'react-icons/fa';
-import { FaPhabricator } from 'react-icons/fa';
+import { FaLeaf } from 'react-icons/fa';
+import { FaFire } from 'react-icons/fa';
+
+import { FaTint } from 'react-icons/fa';
+import { FaDiceThree } from 'react-icons/fa';
+import { FaMoon } from 'react-icons/fa';
+import { FaCloud } from 'react-icons/fa';
 
 class App extends Component {
     constructor(){
@@ -19,11 +25,40 @@ class App extends Component {
     var counter = 0;
     var itemList = this.state.items.map(function(item){
         counter += 1;
+        var icon = null;
+        switch(item[4]) {
+          case 'Cat':
+            icon = < FaCat />
+            break;
+          case 'Star':
+            icon = < FaStar />
+            break;
+          case 'Leaf':
+            icon = < FaLeaf />
+            break;
+          case 'Fire':
+            icon = < FaFire />
+            break;
+          case 'Water':
+            icon = < FaTint />
+            break;
+          case 'Dice-three':
+            icon = < FaDiceThree />
+            break;
+          case 'Moon':
+            icon = < FaMoon />
+            break;
+          case 'Cloud':
+            icon = < FaCloud />
+            break;
+          default:
+            icon = <FaCat />
+        }
         return   <VerticalTimelineElement
                     className="vertical-timeline-element--work"
                     date={counter}
                     iconStyle={{ background: item[2], color: '#fff' }}
-                    icon={<FaCat />}
+                    icon={icon}
                   >
                     <h3 className="vertical-timeline-element-title">{item[0]}</h3>
                     <h4 className="vertical-timeline-element-subtitle">{item[1]}</h4>
